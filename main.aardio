@@ -1,0 +1,23 @@
+import win.ui;
+/*DSG{{*/
+mainForm = win.form(text="bmi计算器";right=757;bottom=467)
+mainForm.add(
+button={cls="button";text="计算";left=196;top=105;right=324;bottom=144;z=3};
+edit_height={cls="edit";left=202;top=38;right=313;bottom=62;edge=1;z=4};
+edit_weight={cls="edit";left=200;top=73;right=311;bottom=97;edge=1;z=5};
+static={cls="static";text="<18.5 体重过轻 18.5-24.9正常范围 25-29.9 超重 30以上肥胖、";left=157;top=240;right=544;bottom=358;transparent=1;z=7};
+static5={cls="static";text="身高(cm)";left=135;top=34;right=201;bottom=74;transparent=1;z=1};
+static6={cls="static";text="体重(kg)";left=136;top=71;right=188;bottom=93;transparent=1;z=2};
+static_bmi={cls="static";text="bmi";left=157;top=178;right=432;bottom=217;transparent=1;z=6}
+)
+/*}}*/
+
+mainForm.button.oncommand = function(id,event){
+	var height = tonumber(mainForm.edit_height.text)/100
+	var weight = tonumber(mainForm.edit_weight.text)
+	var bmi = weight / (height*height)
+	mainForm.static_bmi.text = "bmi:" + math.round(bmi)
+}
+
+mainForm.show();
+return win.loopMessage();
